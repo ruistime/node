@@ -1,0 +1,72 @@
+$font-bs   : 'iconfont';
+$bs-ico-prefix : 'bs-ico-';
+
+@font-face {font-family: "#{$font-bs}";
+//        src: url('#{$icons-font-path}#{$font-bs}.eot'); /* IE9*/
+//        src: url('#{$icons-font-path}#{$font-bs}.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+//        url('#{$icons-font-path}#{$font-bs}.svg#iconfont') format('svg'), /* iOS 4.1- */
+//        url('#{$icons-font-path}#{$font-bs}.woff') format('woff'), /* chrome、firefox */
+        src: url('#{$icons-font-path}#{$font-bs}.svg#iconfont') format('svg'), /* iOS 4.1- */
+             url('#{$icons-font-path}#{$font-bs}.ttf') format('truetype'); /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+
+
+        font-weight: normal;
+        font-style: normal;
+}
+
+[class^="bs-ico-"], [class*="bs-ico-"] {
+        speak: none;
+        display: inline-block;
+        font-family:"iconfont" !important;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        color: $secondary-color;
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        transform: translate(0, 0);
+        &:before {
+                display: inline-block;
+                speak: none;
+                text-decoration: inherit;
+        }
+        &.pull-left {
+                margin-right: .3em;
+        }
+        &.pull-right{
+                margin-left: .3em;
+        }
+        &.mdi-lg:before, &.mdi-lg:after {
+                font-size: 1.33333333em;
+                line-height: 0.75em;
+                vertical-align: -15%;
+        }
+        &.mdi-2x:before, &.mdi-2x:after {
+                font-size: 2em;
+        }
+        &.mdi-3x:before, &.mdi-3x:after {
+                font-size: 3em;
+        }
+        &.mdi-4x:before, &.mdi-4x:after {
+                font-size: 4em;
+        }
+        &.mdi-5x:before, &.mdi-5x:after {
+                font-size: 5em;
+        }
+}
+/* Start Icons */
+.bs-ico-action-user-circle:before {
+        content: "\0042";
+}
+.bs-ico-action-email-circle:before {
+        content: "\0043";
+}
+.bs-ico-action-vcode-circle:before {
+        content: "\0044";
+}
+.bs-ico-action-notice-circle:before {
+        content: "\0041";
+}
+/* end Icons */
