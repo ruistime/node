@@ -20,7 +20,6 @@ module.exports = function(options) {
             "react"
             ,"react-router"
             ,"redux"
-            ,"zepto"
             ,"keymirror"
             ,"classnames"
         ]
