@@ -15,8 +15,8 @@ export default function generateFactories(destination, babelOptions={}) {
         buildContent(content, __dirname, outpath, babelOptions);
     }
 
-    const indexTemplate = fs.readFileSync(path.join(srcRoot, 'templates', 'factory.index.js.template'));
-    const factoryTemplate = fs.readFileSync(path.join(srcRoot, 'templates', 'factory.js.template'));
+    const indexTemplate = fs.readFileSync(path.join(srcRoot, 'js/templates', 'factory.index.js.template.js'));
+    const factoryTemplate = fs.readFileSync(path.join(srcRoot, 'js/templates', 'factory.js.template.js'));
 
     generateCompiledFile( 'index', _.template(indexTemplate)({components}) );
 

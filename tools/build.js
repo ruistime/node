@@ -14,7 +14,7 @@ export default function BuildCommonJs() {
     return exec(`rimraf ${libRoot}`)
         .then(() => fsp.mkdirs(libRoot))
         .then(() => Promise.all([
-            generateFactories(libRoot),
+            //generateFactories(libRoot),
             buildFolder(srcRoot, libRoot)
         ]))
         .then(() => console.log('Built: '.cyan + 'npm module'.green));
