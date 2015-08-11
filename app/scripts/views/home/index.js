@@ -6,13 +6,12 @@ const Navigation = ReactRouter.Navigation;
 const Home = React.createClass({
     mixins: [Navigation],
     render: function() {
-
-            return (
-                <div>
-                    <h2>我的例子</h2>
-                    <h3><Link to="todo">Todo List</Link></h3>
-                </div>
-            );
+        return (
+            <div>
+                <h2>组件列表</h2>
+                <h3><Link to="tabs">Tabs Component</Link></h3>
+            </div>
+        );
     }
 
 });
