@@ -7,9 +7,7 @@ import Tabs from '../../../../src/js/tabs/Tabs';
 import Tab from '../../../../src/js/tabs/Tab';
 import TabContent from '../../../../src/js/tabs/TabContent';
 export default class HomePage extends Component {
-  goBack(){
-  	 
-  }
+
   handleItemClick(){
   	
   }
