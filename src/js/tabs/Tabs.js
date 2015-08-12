@@ -12,13 +12,15 @@ import { EventListener } from '../utils/EventListener';
 export default class Tabs extends Component {
     constructor(props,context){
      	super(props,context);
-     
      	this.state = {
-     		
-     		activeIndex:this.props.activeIndex || 0,
-     		showIndex:this.props.activeIndex|| 0
+     		firstLoad:true,
+     		activeIndex:this.props.activeIndex || 0
      	}
     }
+    shouldComponentUpdate(nextProps, nextState) {
+
+  		return  nextState.activeIndex !== this.props.activeIndex;
+	}
     
     componentWillUnmount(){
     	let target = React.findDOMNode(this.refs.animatedWrap);
@@ -26,30 +28,31 @@ export default class Tabs extends Component {
     }
     componentDidMount(){
     	const { activeIndex } = this.state;
+    	
+    	this.setState({firstLoad:true});
+    	
     	let target = React.findDOMNode(this.refs.animatedWrap);
+    	
     	target.addEventListener("transitionend",()=>{
     		//fix:跨tab页切换 bug
 		    setTimeout(()=>{
 		    
-		    	this.setState({
-		    		showIndex:this.state.activeIndex
-		    	});
-		    	/*if(this.props.onSelect){
-    				this.props.onSelect(activeIndex);
-		    	}else{
-		    		this.setActiveTab(activeIndex);
-		    	}*/
+		    	/*this.setState({
+		    		activeIndex:this.state.activeIndex
+		    	});*/
+		    	
 		    	target.removeEventListener("transitionend");
 		    },0)
     	});
     }
     /**************events  begin*********************/
     handleItemClick(currentIndex,tab){
-    	if(this.props.onSelect){
+    	this.setActiveTab(currentIndex);
+    	/*if(this.props.onSelect){
     		this.props.onSelect(currentIndex,tab);
     	}else{
-    		this.setActiveTab(currentIndex);
-    	}
+    		
+    	}*/
     	//
     }
    
@@ -66,7 +69,9 @@ export default class Tabs extends Component {
 	 * [setActiveTab description]
 	 */
 	setActiveTab(index){
+
 		this.setState({
+			firstLoad:false,
 			activeIndex:index
 		});
 		/*let args = Array.from(arguments);
@@ -96,25 +101,35 @@ export default class Tabs extends Component {
 		let [
 			tabs ,
 			tabsContent,
-			{ activeIndex , showIndex }
+			{ activeIndex  , firstLoad}
 		] = [ [], [] , this.state];
 		//遍历children寻找Tab组件和TabContent
 		React.Children.forEach(this.props.children, (tab, index) => {
-			//children中每一个条目的type.name
-			if (tab.type.name=== "Tab") {
+			//条目的type.name
+			if (tab.type.name === "Tab") {
 				let isActive = activeIndex == index;
-
 				//显示特定的tab
-				let element = (index == showIndex ) ? 
+				
+				let element;
+				if(firstLoad){//第一次加载
+					element = (index == activeIndex) ? 
 					<TabContent active={isActive}>
 							{tab.props.children}
 					</TabContent>
 					:
 					<TabContent active={isActive}></TabContent>;
+
+				}else{
+					element = 
+					<TabContent active={isActive}>
+							{tab.props.children}
+					</TabContent>;
+				}
 				
 				/*EventListener.listen(element,"good",function(){
 					alert("xxx");
 				});*/
+				
 				tabsContent.push(element);
 				
 				tabs.push(
@@ -133,7 +148,7 @@ export default class Tabs extends Component {
 		tabsContent = tabsContent.map((item,index)=>{
 			return (
 				React.cloneElement(item, {
-					key:index+1,
+					key:"tab_content_"+index+1,
     				active: index === activeIndex 
 				}) 
 			) 
@@ -161,9 +176,7 @@ export default class Tabs extends Component {
 						{tabsContent}
 					</div>
 				</div>
-			</div>
-
-			
+			</div>	
 		);
 	}
 }
