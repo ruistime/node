@@ -9,10 +9,7 @@ export default class PageContainer extends Component {
 			add:false
 		};
 	}
-	static propTypes = {
-		page:PropTypes.string
-	};
-    
+	
 	addPage(){
 		//改变状态
 		this.setState({

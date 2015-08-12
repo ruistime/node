@@ -1,63 +1,126 @@
-import  { Component , PropTypes } from 'react';
-import  React from 'react/addons';
+import React, { Component , PropTypes } from 'react';
+import TabContent from './TabContent';
 import classnames from 'classnames';
 import * as StylePropable from '../utils/style-propable';
+import { EventListener } from '../utils/EventListener';
+
 /**
  * Tabs 组件
  * create by lgp
- * <Tab>
- *    
- * </Tab>
  * 
  */
-export default class Tabs extends Component{
-     constructor(props,context){
-     	
+export default class Tabs extends Component {
+    constructor(props,context){
      	super(props,context);
+     
      	this.state = {
-     		activeIndex:0
+     		
+     		activeIndex:this.props.activeIndex || 0,
+     		showIndex:this.props.activeIndex|| 0
      	}
-
-     }
-    /**************events  begin*********************/
-    handleItemClick(currentIndex){
-    	this.setState({
-    		activeIndex: currentIndex
+    }
+    
+    componentWillUnmount(){
+    	let target = React.findDOMNode(this.refs.animatedWrap);
+    	target.removeEventListener("transitionend");
+    }
+    componentDidMount(){
+    	const { activeIndex } = this.state;
+    	let target = React.findDOMNode(this.refs.animatedWrap);
+    	target.addEventListener("transitionend",()=>{
+    		//fix:跨tab页切换 bug
+		    setTimeout(()=>{
+		    
+		    	this.setState({
+		    		showIndex:this.state.activeIndex
+		    	});
+		    	/*if(this.props.onSelect){
+    				this.props.onSelect(activeIndex);
+		    	}else{
+		    		this.setActiveTab(activeIndex);
+		    	}*/
+		    	target.removeEventListener("transitionend");
+		    },0)
     	});
+    }
+    /**************events  begin*********************/
+    handleItemClick(currentIndex,tab){
+    	if(this.props.onSelect){
+    		this.props.onSelect(currentIndex,tab);
+    	}else{
+    		this.setActiveTab(currentIndex);
+    	}
+    	//
     }
    
     /**************events  end*********************/
-	//API:获取活动状态的Tab
+	
+	/**
+	 * 
+	 * @return active index
+	 */
 	getActiveTab(){
-
+		return this.state.activeIndex;
 	}
 	/**
 	 * [setActiveTab description]
 	 */
-	setActiveTab(){
-		
+	setActiveTab(index){
+		this.setState({
+			activeIndex:index
+		});
+		/*let args = Array.from(arguments);
+		let target = React.findDOMNode(this.refs.animatedWrap);
+		if(args.length > 1 && typeof args[1] === "function"){
+
+		}
+		this.setState({
+			activeIndex:index
+		},()=>{
+			if(args.length > 1 && typeof args[1] === "function"){
+				let target = React.findDOMNode(this.refs.animatedWrap);
+				target.addEventListener("transitionend",()=>{
+    				//fix:跨tab页切换 bug
+		    		setTimeout(()=>{
+		    			args[1]();
+		    			target.removeEventListener("transitionend");
+		    		},0)
+    			});
+
+			}
+			
+		});*/
 	}
 	render(){
 		
 		let [
 			tabs ,
 			tabsContent,
-			{ activeIndex }
+			{ activeIndex , showIndex }
 		] = [ [], [] , this.state];
-		
+		//遍历children寻找Tab组件和TabContent
 		React.Children.forEach(this.props.children, (tab, index) => {
+			//children中每一个条目的type.name
 			if (tab.type.name=== "Tab") {
-				let { active } = tab.props;
-				!!active && (activeIndex = index);
+				let isActive = activeIndex == index;
+
+				//显示特定的tab
+				let element = (index == showIndex ) ? 
+					<TabContent active={isActive}>
+							{tab.props.children}
+					</TabContent>
+					:
+					<TabContent active={isActive}></TabContent>;
 				
-				React.Children.forEach(tab.props.children,(tabContent,xindex) =>{
-					if(tabContent.type.name==="TabContent"){
-						tabsContent.push(tabContent);
-					}
+				EventListener.listen(element,"good",function(){
+					alert("xxx");
 				});
+				tabsContent.push(element);
+				
 				tabs.push(
-					React.addons.cloneWithProps(tab,{
+					React.cloneElement(tab,{
 						key:"tab_item_"+index,
+						active:isActive,
 						activeIndex:activeIndex,
 						currentIndex:index,
     					handleItemClick:this.handleItemClick.bind(this),
@@ -69,7 +132,7 @@ export default class Tabs extends Component{
 
 		tabsContent = tabsContent.map((item,index)=>{
 			return (
-				React.addons.cloneWithProps(item, {
+				React.cloneElement(item, {
 					key:index+1,
     				active: index === activeIndex 
 				}) 
@@ -84,6 +147,7 @@ export default class Tabs extends Component{
 		let tabsStyle = {
 			transform:'translate3d(' + (-(+this.state.activeIndex) * 100) + '%,0,0)'
 		}
+
 		return (
 			<div className="tabbarWrapper">
 				<div className="toolbar tabbar">
@@ -93,7 +157,7 @@ export default class Tabs extends Component{
 					</div>
 				</div>
 				<div className="tabs-animated-wrap">
-					<div className="tabs" style={StylePropable.mergeAndPrefix(tabsStyle)}>
+					<div className="tabs"  ref="animatedWrap" style={StylePropable.mergeAndPrefix(tabsStyle)}>
 						{tabsContent}
 					</div>
 				</div>

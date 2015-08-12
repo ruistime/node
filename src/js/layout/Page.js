@@ -2,9 +2,7 @@ import React , { Component , PropTypes } from 'react';
 import classnames from 'classnames';
 
 export default class Page extends Component {
-	static propTypes = {
-		page:PropTypes.string
-	};
+
 	changeProps(){
 		this.props.cls="xxx";
 	}
@@ -28,19 +26,19 @@ export default class Page extends Component {
 		const { namex } = this.props;
 	
 		const  node = React.findDOMNode(this);
-		let $node = $(node);
+		
 		let  transitionEvent = this.whichTransitionEvent();
 
-		if($node.hasClass("page-from-right-to-center")){
+		/*if($node.hasClass("page-from-right-to-center")){
 			node.addEventListener("webkitAnimationEnd",function(){
-				$node.prop("class","page page-on-center")
+				//$node.prop("class","page page-on-center")
 			});
 		}else{
 			node.addEventListener("webkitAnimationEnd",function(){
-				$node.prop("class","page page-on-left");
-				$node.prop("class","page page-on-center");
+				//$node.prop("class","page page-on-left");
+				//$node.prop("class","page page-on-center");
 			});
-		}
+		}*/
 
 		
 	}

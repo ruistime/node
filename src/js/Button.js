@@ -5,15 +5,6 @@ import classnames from 'classnames';
  * Button 组件
  */
 export default class Button extends Component {
-	static propTypes = {
-		theme:PropTypes.string
-		,fill:PropTypes.bool
-		,szie:PropTypes.string
-		,style:PropTypes.string
-		,text:PropTypes.string.isRequired
-		,active:PropTypes.bool
-
-	}
 	constructor(props,context){
 		super(props,context);
 	}
@@ -37,4 +28,12 @@ export default class Button extends Component {
 			</p>
 		);
 	}
+}
+Button.propTypes = {
+	theme:PropTypes.string
+	,fill:PropTypes.bool
+	,szie:PropTypes.string
+	,style:PropTypes.string
+	,text:PropTypes.string.isRequired
+	,active:PropTypes.bool
 }
