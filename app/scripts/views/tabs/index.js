@@ -45,7 +45,7 @@ export default class TabsPage extends Component {
 			    						<p>This is tab 2 content</p>
 			    					</div>
 			    				</Tab>
-			    				<Tab label="测评">		    				
+			    				<Tab label="测评">
 			    					<div className="content-block">
 			    						<p>This is tab 3 content</p>
 			    					</div>

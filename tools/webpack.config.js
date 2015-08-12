@@ -4,25 +4,33 @@
 var webpack = require("webpack");
 var	path = require("path");
 
+var reactExternal = {
+    root: 'React',
+    commonjs2: 'react',
+    commonjs: 'react',
+    amd: 'react'
+};
+
+
 module.exports = {
     entry: path.resolve(__dirname, "../src/js/index"),
     output: {
         library: "AppUI",
         libraryTarget: "umd",
 
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "../dist"),
         filename: "bs-appui.js"
     },
     module: {
         loaders: [
             {
                 test: /\.jsx?$/
-                ,exclude: /(node_modules|bower_components)/
+                ,exclude: /node_modules/
                 ,loader: 'babel'
                 ,query: {
-                optional: ['runtime'],
-                stage: 0
-            }
+                    optional: ['runtime'],
+                    stage: 0
+                }
             }
         ]
     },
@@ -30,7 +38,7 @@ module.exports = {
         extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx']
     },
     externals: {
-        react: 'React'
+        react: 'react'
     },
     devtool: 'eval'
 };
