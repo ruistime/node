@@ -20,9 +20,7 @@ import classnames from 'classnames';
  * </ContainerView>
  */
 export default class Container extends Component {
-	static propTypes = {
-		page:PropTypes.string
-	};
+	
 	render(){
 		const page="index";
 		return (

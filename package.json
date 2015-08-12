@@ -30,7 +30,7 @@
     "react-router": "^0.13.3",
     "react-tap-event-plugin": "^0.1.7",
     "webpack": "^1.10.5",
-
+    "events":"",
     "child-process-promise": "^1.1.0",
     "glob": "^5.0.14",
     "fs-extra": "^0.23.0",
