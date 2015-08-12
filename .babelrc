@@ -1,10 +1,5 @@
 {
   "stage": 0,
-<<<<<<< HEAD
   "optional": ["runtime"],
   "loose": ["all"]
 }
-=======
-  "loose": "all"
-}
->>>>>>> bd9667506c637c22aa599e9ebc638fa0bb4fa8ce
