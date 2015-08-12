@@ -112,9 +112,9 @@ export default class Tabs extends Component {
 					:
 					<TabContent active={isActive}></TabContent>;
 				
-				EventListener.listen(element,"good",function(){
+				/*EventListener.listen(element,"good",function(){
 					alert("xxx");
-				});
+				});*/
 				tabsContent.push(element);
 				
 				tabs.push(

@@ -4,6 +4,9 @@ import classnames from 'classnames';
  * Tabs 子组件 Tab
  */
 export default class Tab extends Component {
+	static propTypes={
+		
+	}
 	constructor(props,context){
 		super(props,context);
 	}
@@ -20,7 +23,7 @@ export default class Tab extends Component {
 		//必须
 		if(!label) throw new Error("Tab 必须配置label!");
 		return (
-			<a href="javascript:;" onClick={this.handleClick.bind(this)} className={classnames("tab-link",{active:!!active})}>{ label }</a>
+			<a href="javascript:;" onClick={::this.handleClick} className={classnames("tab-link",{active:!!active})}>{ label }</a>
 		);
 	}
 }
