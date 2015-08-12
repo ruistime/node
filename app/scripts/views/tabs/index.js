@@ -16,16 +16,7 @@ export default class TabsPage extends Component {
 		
 		
 	}
-	handleSelect(index,tab){
-		let { tabs } = this.refs;
-		tabs.setActiveTab(index);
-	  	/*tabs.setActiveTab(index,function(){
-	  			alert("xx");
-	  			tabs.setState({
-	  				done:true
-	  			});
-	  	});*/
-	}
+
 	render() {
 	  	
 	    return (
@@ -34,7 +25,7 @@ export default class TabsPage extends Component {
 			    	<PageContainer>
 			    		<Page>
 			    			<NavBar title="个人自助"  />
-			    			<Tabs ref="tabs" activeIndex="3" onSelect={this.handleSelect.bind(this)}>
+			    			<Tabs ref="tabs" activeIndex="1" >
 			    				<Tab label="绩效" >
 			    					<div className="content-block">
 			    						<p>This is tab 1 content</p>

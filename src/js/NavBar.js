@@ -5,9 +5,7 @@ import classnames from 'classnames';
  * 顶部导航组件
  */
 export default class NavBar extends Component{
-	static propTypes = {
-
-	};
+	
 	handleClick(item){
 		if(item.onClick) item.onClick();
 	}
