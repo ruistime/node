@@ -10,7 +10,7 @@
     "hot-server": "webpack-dev-server --config webpack.hot.dev.config.js --hot --progress --colors --inline --port8080 --content-base app/",
     "build": "webpack --config webpack.prod.config.js --progress --profile --colors",
 
-    "lib-build": "babel-node tools/build-cli.js --lib-only"
+    "lib-build": "webpack --config tools/webpack.config.min.js --progress"
   },
   "main": "app.js",
   "devDependencies": {
