@@ -13,130 +13,81 @@ export default class Tabs extends Component {
     constructor(props,context){
      	super(props,context);
      	this.state = {
-     		firstLoad:true,
      		activeIndex:this.props.activeIndex || 0
      	}
     }
-    shouldComponentUpdate(nextProps, nextState) {
-
-  		return  nextState.activeIndex !== this.props.activeIndex;
-	}
-    
+   
     componentWillUnmount(){
     	let target = React.findDOMNode(this.refs.animatedWrap);
     	target.removeEventListener("transitionend");
     }
     componentDidMount(){
     	const { activeIndex } = this.state;
-    	
-    	this.setState({firstLoad:true});
-    	
-    	let target = React.findDOMNode(this.refs.animatedWrap);
-    	
-    	target.addEventListener("transitionend",()=>{
-    		//fix:跨tab页切换 bug
-		    setTimeout(()=>{
-		    
-		    	/*this.setState({
-		    		activeIndex:this.state.activeIndex
-		    	});*/
-		    	
-		    	target.removeEventListener("transitionend");
-		    },0)
-    	});
+    	this.props.onInitTab && this.props.onInitTab();
     }
-    /**************events  begin*********************/
+  
     handleItemClick(currentIndex,tab){
+    	
     	this.setActiveTab(currentIndex);
-    	/*if(this.props.onSelect){
-    		this.props.onSelect(currentIndex,tab);
-    	}else{
-    		
-    	}*/
-    	//
+    	
     }
    
-    /**************events  end*********************/
+    
 	
 	/**
-	 * 
+	 * 返回当前活动标签页索引
 	 * @return active index
 	 */
 	getActiveTab(){
 		return this.state.activeIndex;
 	}
 	/**
-	 * [setActiveTab description]
+	 * 根据索引设置活动标签页
+	 * 
 	 */
 	setActiveTab(index){
 
 		this.setState({
-			firstLoad:false,
+			done:false,
 			activeIndex:index
+		},function () {
+			let target = React.findDOMNode(this.refs.animatedWrap);
+    	
+	    	target.addEventListener("transitionend",()=>{
+	    		//fix:跨tab页切换 bug
+			    setTimeout(()=>{	
+			    	this.props.onChangeTab && this.props.onChangeTab(index);
+			    	target.removeEventListener("transitionend");
+			    },0)
+	    	});
 		});
-		/*let args = Array.from(arguments);
-		let target = React.findDOMNode(this.refs.animatedWrap);
-		if(args.length > 1 && typeof args[1] === "function"){
-
-		}
-		this.setState({
-			activeIndex:index
-		},()=>{
-			if(args.length > 1 && typeof args[1] === "function"){
-				let target = React.findDOMNode(this.refs.animatedWrap);
-				target.addEventListener("transitionend",()=>{
-    				//fix:跨tab页切换 bug
-		    		setTimeout(()=>{
-		    			args[1]();
-		    			target.removeEventListener("transitionend");
-		    		},0)
-    			});
-
-			}
-			
-		});*/
 	}
 	render(){
 		
 		let [
 			tabs ,
 			tabsContent,
-			{ activeIndex  , firstLoad}
+			{ activeIndex  , firstLoad , done}
 		] = [ [], [] , this.state];
 		//遍历children寻找Tab组件和TabContent
+		
 		React.Children.forEach(this.props.children, (tab, index) => {
 			//条目的type.name
 			if (tab.type.name === "Tab") {
 				let isActive = activeIndex == index;
-				//显示特定的tab
+				//显示特定索引的tab
+				let element  = <TabContent active={isActive} >
+						{tab.props.children}
+				</TabContent>;
 				
-				let element;
-				if(firstLoad){//第一次加载
-					element = (index == activeIndex) ? 
-					<TabContent active={isActive}>
-							{tab.props.children}
-					</TabContent>
-					:
-					<TabContent active={isActive}></TabContent>;
-
-				}else{
-					element = 
-					<TabContent active={isActive}>
-							{tab.props.children}
-					</TabContent>;
-				}
+			    tabsContent.push(element);
 				
-				/*EventListener.listen(element,"good",function(){
-					alert("xxx");
-				});*/
-				
-				tabsContent.push(element);
 				
 				tabs.push(
 					React.cloneElement(tab,{
 						key:"tab_item_"+index,
 						active:isActive,
-						activeIndex:activeIndex,
+						activeIndex:this.state.activeIndex,
 						currentIndex:index,
     					handleItemClick:this.handleItemClick.bind(this),
 					}) 
@@ -144,6 +95,7 @@ export default class Tabs extends Component {
 				
 			}
 		});
+		
 
 		tabsContent = tabsContent.map((item,index)=>{
 			return (
@@ -153,6 +105,7 @@ export default class Tabs extends Component {
 				}) 
 			) 
 		});
+
 		
 		let tabLinkWidth = 1 / tabs.length *100;
 		let lightStyle={
