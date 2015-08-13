@@ -10,7 +10,9 @@ const Home = React.createClass({
             <div>
                 <h2>组件列表</h2>
                 <h3><Link to="tabs">Tabs Component</Link></h3>
+
                 <h3><Link to="button">Button Component</Link></h3>
+
             </div>
         );
     }

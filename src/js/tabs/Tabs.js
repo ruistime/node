@@ -2,6 +2,9 @@ import React, { Component , PropTypes } from 'react';
 import TabContent from './TabContent';
 import classnames from 'classnames';
 
+import * as StylePropable from '../utils/stylePropable';
+
+
 
 /**
  * Tabs 组件
@@ -78,10 +81,9 @@ export default class Tabs extends Component {
 				let element  = <TabContent active={isActive} >
 						{tab.props.children}
 				</TabContent>;
-				
+
 			    tabsContent.push(element);
-				
-				
+					
 				tabs.push(
 					React.cloneElement(tab,{
 						key:"tab_item_"+index,
@@ -122,7 +124,7 @@ export default class Tabs extends Component {
 				<div className="toolbar tabbar">
 					<div className="toolbar-inner">
 						{tabs}
-						<span className="tab-link-highlight" style={lightStyle}></span>	
+						<span className="tab-link-highlight" style={StylePropable.mergeAndPrefix(lightStyle)}></span>	
 					</div>
 				</div>
 				<div className="tabs-animated-wrap">
