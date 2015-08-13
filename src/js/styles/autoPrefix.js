@@ -1,5 +1,5 @@
 const isBrowser = typeof window !== 'undefined';
-const Modernizr = isBrowser ? require('../utils/modernizr.custom') : undefined;
+const Modernizr = isBrowser ? require('../utils/modernizr') : undefined;
 
 let prefixedKeys = {};
 

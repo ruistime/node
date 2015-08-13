@@ -34,7 +34,7 @@ export default class TabsPage extends Component {
 	}
 	onInitTab(){
 		let { book, car} = this.refs;
-		car.renderComponent();
+		book.renderComponent();
 	}
 	render() {
 	    return (
@@ -47,7 +47,7 @@ export default class TabsPage extends Component {
 			    				<NavItem icon="bars"  role="right" />
 			    				<NavItem icon="bars"  role="right" />
 			    			</Nav>
-			    			<Tabs ref="tabs" activeIndex="1" onInitTab={::this.onInitTab} onChangeTab={::this.onChangeTab}>
+			    			<Tabs ref="tabs" activeIndex="0" onInitTab={::this.onInitTab} onChangeTab={::this.onChangeTab}>
 			    				<Tab label="未办">
 			    					<BookList ref="book" />
 			    				</Tab>

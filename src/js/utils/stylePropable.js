@@ -1,5 +1,5 @@
 import React from 'react';
-import * as ImmutabilityHelper from './immutability-helper';
+import * as ImmutabilityHelper from './immutabilityHelper';
 import * as Styles from './styles';
 
 	
