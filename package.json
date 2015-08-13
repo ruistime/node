@@ -29,7 +29,8 @@
     "react-draggable2": "^0.6.0",
     "react-router": "^0.13.3",
     "react-tap-event-plugin": "^0.1.7",
-    "webpack": "^1.10.5"
+    "webpack": "^1.10.5",
+    "yargs": "^3.16.1"
   },
   "dependencies": {
     "babel-runtime": "^5.8.12",
