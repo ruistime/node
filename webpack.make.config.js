@@ -20,7 +20,6 @@ module.exports = function(options) {
             "react"
             ,"react-router"
             ,"redux"
-            ,"keymirror"
             ,"classnames"
         ]
     }
@@ -76,7 +75,6 @@ module.exports = function(options) {
             React: "react"
             ,ReactRouter: "react-router"
             ,Redux: "redux"
-            ,keyMirror: "keymirror"
             ,Classnames: "classnames"
         })
         ,new webpack.ResolverPlugin([

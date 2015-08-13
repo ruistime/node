@@ -19,9 +19,14 @@ export default class TabsPage extends Component {
 
 	}
 	componentDidMount(){
+
 		React.initializeTouchEvents(true);
 	/*	let { book } = this.refs;
 		book.renderComponent();*/
+
+		let { book } = this.refs;
+		 book.renderComponent();
+
 	}
 	handleBack(){
 		alert("单击了返回");
@@ -38,6 +43,7 @@ export default class TabsPage extends Component {
 		book.renderComponent();
 	}
 	render() {
+
 	    return (
 	    	<div className="views">
 			    <Container>
@@ -60,7 +66,8 @@ export default class TabsPage extends Component {
 			    	</PageContainer>
 			    </Container>
 			    
+
 			</div>
-	     );
-  }
+		);
+	}
 }

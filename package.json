@@ -10,7 +10,7 @@
     "hot-server": "webpack-dev-server --config webpack.hot.dev.config.js --hot --progress --colors --inline --host 10.129.10.62 --port8080 --content-base app/",
     "build": "webpack --config webpack.prod.config.js --progress --profile --colors",
 
-    "lib-build": "webpack --config tools/webpack.config.min.js --progress"
+    "lib-build": "webpack --config tools/webpack.config.min.js --progress  --display-modules"
   },
   "main": "app.js",
   "devDependencies": {
@@ -30,14 +30,6 @@
     "react-router": "^0.13.3",
     "react-tap-event-plugin": "^0.1.7",
     "webpack": "^1.10.5",
-    "events":"",
-    "child-process-promise": "^1.1.0",
-    "glob": "^5.0.14",
-    "fs-extra": "^0.23.0",
-    "fs-promise": "^0.3.1",
-    "colors": "^1.1.2",
-    "output-file-sync": "^1.1.1",
-    "rimraf": "^2.4.2",
     "yargs": "^3.16.1"
   },
   "dependencies": {

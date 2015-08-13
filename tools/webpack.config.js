@@ -9,20 +9,19 @@ module.exports = {
     output: {
         library: "AppUI",
         libraryTarget: "umd",
-
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "../dist"),
         filename: "bs-appui.js"
     },
     module: {
         loaders: [
             {
                 test: /\.jsx?$/
-                ,exclude: /(node_modules|bower_components)/
+                ,exclude: /node_modules/
                 ,loader: 'babel'
                 ,query: {
-                optional: ['runtime'],
-                stage: 0
-            }
+                    optional: ['runtime'],
+                    stage: 0
+                }
             }
         ]
     },
@@ -30,7 +29,8 @@ module.exports = {
         extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx']
     },
     externals: {
-        react: 'React'
+        "react": "react",
+        "react/addons": "react"
     },
     devtool: 'eval'
 };
