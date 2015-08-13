@@ -1,7 +1,7 @@
 import React , { Component , PropTypes } from 'react';
 import classnames from 'classnames';
 import Page from './Page';
-import NavBar from '../NavBar';
+
 export default class PageContainer extends Component {
 	constructor(state,context){
 		super(state,context);
