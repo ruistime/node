@@ -9,8 +9,8 @@ import Tab from '../../../../src/js/tabs/Tab';
 //测试组件
 import BookList from '../../../../src/js/tabs/BookList';
 import CarShop from '../../../../src/js/tabs/CarShop';
-import { EventEmitter } from 'events';
-let events = new EventEmitter();
+
+
 export default class TabsPage extends Component {
 	constructor(props,context){
 		super(props,context);
@@ -19,6 +19,7 @@ export default class TabsPage extends Component {
 
 	}
 	componentDidMount(){
+		React.initializeTouchEvents(true);
 	/*	let { book } = this.refs;
 		book.renderComponent();*/
 	}
@@ -34,7 +35,7 @@ export default class TabsPage extends Component {
 	}
 	onInitTab(){
 		let { book, car} = this.refs;
-		car.renderComponent();
+		book.renderComponent();
 	}
 	render() {
 	    return (
@@ -47,7 +48,7 @@ export default class TabsPage extends Component {
 			    				<NavItem icon="bars"  role="right" />
 			    				<NavItem icon="bars"  role="right" />
 			    			</Nav>
-			    			<Tabs ref="tabs" activeIndex="1" onInitTab={::this.onInitTab} onChangeTab={::this.onChangeTab}>
+			    			<Tabs ref="tabs" activeIndex="0" onInitTab={::this.onInitTab} onChangeTab={::this.onChangeTab}>
 			    				<Tab label="未办">
 			    					<BookList ref="book" />
 			    				</Tab>

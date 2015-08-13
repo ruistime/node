@@ -1,8 +1,7 @@
 import React, { Component , PropTypes } from 'react';
 import TabContent from './TabContent';
 import classnames from 'classnames';
-import * as StylePropable from '../utils/style-propable';
-import { EventListener } from '../utils/EventListener';
+
 
 /**
  * Tabs 组件
@@ -53,11 +52,11 @@ export default class Tabs extends Component {
 		},function () {
 			let target = React.findDOMNode(this.refs.animatedWrap);
     	
-	    	target.addEventListener("transitionend",()=>{
+	    	target.addEventListener("webkitTransitionEnd",()=>{
 	    		//fix:跨tab页切换 bug
 			    setTimeout(()=>{	
 			    	this.props.onChangeTab && this.props.onChangeTab(index);
-			    	target.removeEventListener("transitionend");
+			    	target.removeEventListener("webkitTransitionEnd");
 			    },0)
 	    	});
 		});
@@ -109,13 +108,15 @@ export default class Tabs extends Component {
 		
 		let tabLinkWidth = 1 / tabs.length *100;
 		let lightStyle={
-			transform:'translate3d(' + ((+this.state.activeIndex) * 100) + '%,0,0)',
+			"-webkit-transform":'-webkit-translate3d(' + (Number.parseInt(this.state.activeIndex) * 100) + '%,0,0)',
+			"transform":'translate3d(' + (Number.parseInt(this.state.activeIndex) * 100) + '%,0,0)',
 			width:tabLinkWidth+'%'
 		}
 		let tabsStyle = {
-			transform:'translate3d(' + (-(+this.state.activeIndex) * 100) + '%,0,0)'
+			"-webkit-transform":'-webkit-translate3d(' + (-(Number.parseInt(this.state.activeIndex) * 100)) + '%,0,0)',
+			"transform":'translate3d(' + (-(Number.parseInt(this.state.activeIndex) * 100)) + '%,0,0)'
 		}
-
+		
 		return (
 			<div className="tabbarWrapper">
 				<div className="toolbar tabbar">
@@ -125,7 +126,7 @@ export default class Tabs extends Component {
 					</div>
 				</div>
 				<div className="tabs-animated-wrap">
-					<div className="tabs"  ref="animatedWrap" style={StylePropable.mergeAndPrefix(tabsStyle)}>
+					<div className="tabs"  ref="animatedWrap" style={tabsStyle}>
 						{tabsContent}
 					</div>
 				</div>

@@ -1,6 +1,5 @@
 import React , { Component , PropTypes } from 'react';
 import classnames from 'classnames';
-import { EventListener } from '../utils/EventListener';
 export default class TabContent extends Component {
 	constructor(props,context){
 		super(props,context);
