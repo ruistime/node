@@ -16,7 +16,7 @@ module.exports = {
     entry: path.resolve(__dirname, "../src/js/index"),
     output: {
         library: "AppUI",
-        libraryTarget: "umd",
+        libraryTarget: "commonjs2",
 
         path: path.resolve(__dirname, "../dist"),
         filename: "bs-appui.js"
@@ -42,3 +42,23 @@ module.exports = {
     },
     devtool: 'eval'
 };
+
+//var ComponentPlugin = require("component-webpack-plugin");
+//module.exports = {
+//    module: {
+//        loaders: [
+//            {
+//                test: /\.jsx?$/
+//                ,exclude: /node_modules/
+//                ,loader: 'babel'
+//                ,query: {
+//                    optional: ['runtime'],
+//                    stage: 0
+//                }
+//            }
+//        ]
+//    },
+//    plugins: [
+//        new ComponentPlugin()
+//    ]
+//}
