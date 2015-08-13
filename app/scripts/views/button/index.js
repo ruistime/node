@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NavBar from '../../../../src/js/NavBar';
 import Container from '../../../../src/js/layout/Container';
 import PageContainer from '../../../../src/js/layout/PageContainer';
 import Page from '../../../../src/js/layout/Page';

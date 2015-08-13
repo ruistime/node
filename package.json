@@ -29,16 +29,7 @@
     "react-draggable2": "^0.6.0",
     "react-router": "^0.13.3",
     "react-tap-event-plugin": "^0.1.7",
-    "webpack": "^1.10.5",
-    "events":"",
-    "child-process-promise": "^1.1.0",
-    "glob": "^5.0.14",
-    "fs-extra": "^0.23.0",
-    "fs-promise": "^0.3.1",
-    "colors": "^1.1.2",
-    "output-file-sync": "^1.1.1",
-    "rimraf": "^2.4.2",
-    "yargs": "^3.16.1"
+    "webpack": "^1.10.5"
   },
   "dependencies": {
     "babel-runtime": "^5.8.12",
