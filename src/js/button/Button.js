@@ -9,22 +9,24 @@ export default class Button extends Component{
 		if(this.props.onClick) this.props.onClick(this);
 	}
 	render(){
-		const { 
+		let { 
 				url = Constants.A_DEFAUTL_URL , 
 			    text = Constants.EMPTY , 
 			    size ,
 			    fill ,
 			    list ,
+			   	raised,
 			    color,
 			    onClick,
 			    ...other
 			   } = this.props;
 
 		const { COLORS , BTNCLASSES }  = Constants;
-
+		fill = fill ? "fill" : undefined;
+		let button = list ? "":"button";
 		return (
-			<a href={url} className={classnames("button", COLORS[color],
-				BTNCLASSES[size],BTNCLASSES[fill],BTNCLASSES[list])
+			<a href={url} className={classnames(button, COLORS[color],
+				BTNCLASSES[size],BTNCLASSES[fill],BTNCLASSES[list],BTNCLASSES[raised])
 				} onClick={::this.handleClick} {...other}>
 				{text}
 			</a>
