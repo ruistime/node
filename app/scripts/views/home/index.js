@@ -12,7 +12,7 @@ const Home = React.createClass({
                 <h3><Link to="tabs">Tabs Component</Link></h3>
 
                 <h3><Link to="button">Button Component</Link></h3>
-
+                <h3><Link to="nav">Nav Component</Link></h3>
             </div>
         );
     }

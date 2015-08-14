@@ -5828,6 +5828,7 @@ a.item-link,
 .disabled,
 [disabled] {
   opacity: 0.55;
+  cursor: not-allowed;
   pointer-events: none;
 }
 .disabled .disabled,
@@ -5835,4 +5836,10 @@ a.item-link,
 [disabled] .disabled,
 [disabled] [disabled] {
   opacity: 1;
+}
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+  
+  opacity: .65;
+  filter: alpha(opacity=65);
+  box-shadow: none;
 }

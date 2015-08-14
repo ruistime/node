@@ -49,12 +49,15 @@ export default class ButtonPage extends Component {
 			    				<div className="content-block-title">Button</div>
 			    				<div className="content-block">
 			    					<p>
-			    						<Button text="BUTTON(有事件)" color="red"
+			    						<Button text="BUTTON(有事件)"  color="red"
 			    						 fill="fill" size="big"  onClick={::this.onClick}/>
 			    					</p>
-			    					
 			    					<p>
-			    						<Button text="raised button" color="blue"
+			    						<Button text="BUTTON(disabled不会触发事件)"  disabled color="red"
+			    						 fill="fill" size="big"  onClick={::this.onClick}/>
+			    					</p>
+			    					<p>
+			    						<Button text="raised button"  color="blue"
 			    						 fill="fill" size="big" raised="raised"/>
 			    					</p>
 			    					<p>

@@ -16,6 +16,7 @@ export default class Button extends Component{
 			    fill ,
 			    list ,
 			   	raised,
+			   	disabled,
 			    color,
 			    onClick,
 			    ...other
@@ -27,7 +28,7 @@ export default class Button extends Component{
 		return (
 			<a href={url} className={classnames(button, COLORS[color],
 				BTNCLASSES[size],BTNCLASSES[fill],BTNCLASSES[list],BTNCLASSES[raised])
-				} onClick={::this.handleClick} {...other}>
+				} onClick={::this.handleClick} disabled={disabled} {...other} >
 				{text}
 			</a>
 		);
