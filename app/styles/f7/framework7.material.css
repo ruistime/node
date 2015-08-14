@@ -5843,3 +5843,17 @@ a.item-link,
   filter: alpha(opacity=65);
   box-shadow: none;
 }
+.page{
+    background: #efeff4;
+}
+.list-block ul {
+  background: #ffffff;
+}
+.no-padding{
+  
+  padding: 0 
+  
+}
+.red-tip{
+  color:red;
+}

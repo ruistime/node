@@ -9,7 +9,7 @@ import PageContainer from '../../../../src/js/layout/PageContainer';
 import Page from '../../../../src/js/layout/Page';
 
 
-export default class ButtonPage extends Component {
+export default class NavPage extends Component {
 
 	constructor(props,context){
 		super(props,context);
