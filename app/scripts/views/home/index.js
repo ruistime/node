@@ -3,8 +3,17 @@
  */
 const Link = ReactRouter.Link;
 const Navigation = ReactRouter.Navigation;
+import CSSCore from '../../../../src/js/utils/cssCore';
 const Home = React.createClass({
     mixins: [Navigation],
+    componentDidMount(){
+      /*  let node = React.findDOMNode(this);
+        
+        CSSCore.addClass(node,"page-from-right-to-center");
+        setTimeout(()=>{
+            CSSCore.removeClass(node,"page-from-right-to-center");
+        },2000)*/
+    },
     render: function() {
         return (
             <div>

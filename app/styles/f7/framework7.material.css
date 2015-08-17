@@ -5867,7 +5867,7 @@ a.item-link,
     max-width: 40px;
     border-radius: 50%;
 }
-.page-from-right-to-center:before,
+/* .page-from-right-to-center:before,
 .page-from-center-to-right:before {
   position: absolute;
   right: 100%;
@@ -6010,7 +6010,7 @@ html.android .page-from-center-to-right:before {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
-}
+} */
 .card-footer a.link {
      color: #757575; 
     

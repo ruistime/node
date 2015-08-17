@@ -51,9 +51,7 @@ function detectEvents() {
     delete EVENT_NAME_MAP.animationend.animation;
   }
 
-  if (!('TransitionEvent' in window)) {
-    delete EVENT_NAME_MAP.transitionend.transition;
-  }
+ 
 
   for (var baseEventName in EVENT_NAME_MAP) {
     var baseEvents = EVENT_NAME_MAP[baseEventName];

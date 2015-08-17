@@ -23,7 +23,8 @@ export default class ButtonPage extends Component {
 
 	}
 	componentDidMount(){
-		console.log(this);
+		
+		//console.log(React.renderToString());
 	}
 	
 	
@@ -31,7 +32,7 @@ export default class ButtonPage extends Component {
 		this.refs.pageComponent.addClass("page-from-center-to-right");
 		setTimeout(()=>{
 			this._reactInternalInstance._context.router.transitionTo("/");
-		},500);
+		},100);
 	}
 	
 	render() {
@@ -48,11 +49,11 @@ export default class ButtonPage extends Component {
 			    				<div className="content-block">
 			    					<p>
 			    						<Button text="BUTTON(有事件)"  color="red"
-			    						 fill="fill" size="big"  onClick={::this.onClick}/>
+			    						 fill size="big"  onClick={::this.onClick}/>
 			    					</p>
 			    					<p>
 			    						<Button text="BUTTON(disabled不会触发事件)"  disabled color="red"
-			    						 fill="fill" size="big"  onClick={::this.onClick}/>
+			    						 fill size="big"  onClick={::this.onClick}/>
 			    					</p>
 			    					<p>
 			    						<Button text="raised button"  color="blue"

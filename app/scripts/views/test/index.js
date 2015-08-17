@@ -6,7 +6,7 @@ import Nav from '../../../../src/js/nav/Nav';
 import NavItem from '../../../../src/js/nav/NavItem';
 
 import Page from '../../../../src/js/layout/Page';
-//import Button from '../../../../src/js/button/Button';
+
 //import ButtonRow from '../../../../src/js/button/ButtonRow';
 //import ButtonList from '../../../../src/js/button/ButtonList';
 
@@ -29,20 +29,15 @@ export default class ButtonPage extends Component {
 	}
 
 
-	onClick(btn){
-		this.refs.pageComponent.addClass("page-from-center-to-right");
-		setTimeout(()=>{
-			this._reactInternalInstance._context.router.transitionTo("/");
-		},500);
-	}
+
 
 	render() {
-		console.log(Button);
+		
 		const { done} = this.state ;
 		return (
 				<Page animation={true} ref="pageComponent">
 	    			<Nav title="绩效">
-	    				<NavItem icon="back" role="left"  onClick={::this.onClick}/>
+	    				<NavItem icon="back" role="left"  />
 	    				<NavItem icon="bars" role="right" />
 	    			</Nav>
 			    	<div className="page-content">

@@ -46,9 +46,7 @@ function detectEvents() {
   // style object but the events that fire will still be prefixed, so we need
   // to check if the un-prefixed events are useable, and if not remove them
   // from the map
-  if (!('AnimationEvent' in window)) {
-    delete EVENT_NAME_MAP.animationend.animation;
-  }
+
 
   if (!('TransitionEvent' in window)) {
     delete EVENT_NAME_MAP.transitionend.transition;
