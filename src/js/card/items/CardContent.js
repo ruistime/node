@@ -8,13 +8,14 @@ import * as StylePropable from '../../utils/stylePropable';
 export default class CardContent extends Component {
 	static defaultProps = {
 		style:{},
+		
 		cls:Constants.STRING_COMMON.EMPTY
 	};
 	constructor(props,context){
 		super(props,context);
 	}
 	render(){
-		let { cls   , style  , children , ...other  } = this.props;
+		let { cls   , style  , children , ...other } = this.props;
 		return (
 			<div className="card-content">
     			<div className={classnames("card-content-inner",cls)} style={StylePropable.mergeAndPrefix(style)} { ...other } >

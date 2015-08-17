@@ -11,6 +11,9 @@ import CardHeader from '../../../../src/js/card/items/CardHeader';
 import CardContent from '../../../../src/js/card/items/CardContent';
 import CardFooter from '../../../../src/js/card/items/CardFooter';
 
+import SimpleCard from '../../../../src/js/card/SimpleCard';
+
+
 export default class CardsPage extends Component {
 
 	constructor(props,context){
@@ -20,23 +23,68 @@ export default class CardsPage extends Component {
 	static defaultProps = {
 		
 	  	cardData:{
-	  		header:{
-	  			text:"2015年第三季度绩效考核（7）"
-	  		},
+	  		
 	  		content:{
-	  			text:"Card with header and footer. Card header is used to display card title and footer for some additional information or for custom actions."
+	  			text:"2015年第三季度绩效考核"
 	  		},
 	  		footer:{
 	  			links:[{
-	  				text:"待审批(2)",
+	  				text:"待审批",
 	  				url:"javascript:;"
 	  			},{
-	  				text:"待打分(4)",
+	  				text:"待打分",
 	  				url:"javascript:;"
 	  			},{
-	  				text:"签字确认(1)",
+	  				text:"签字确认",
 	  				url:"javascript:;"
 	  			}]
+	  		}
+	  	},
+	  	cardData3:{
+	  		
+	  		content:{
+	  			text:"2015年第二季度绩效考核",
+	  			count:2
+	  		},
+	  		footer:{
+	  			links:[{
+	  				text:"待审批",
+	  				url:"javascript:;",
+	  				count:1
+	  			},{
+	  				text:"待打分",
+	  				count:1,
+	  				url:"javascript:;"
+	  			},{
+	  				text:"签字确认",
+	  				url:"javascript:;",
+	  				count:0
+	  			}]
+	  		}
+	  	},
+	  	cardData4:{
+	  		
+	  		content:{
+	  			text:"2015年第一季度绩效考核",
+	  			count:1
+	  		},
+	  		footer:{
+	  			links:[{
+	  				text:"待打分",
+	  				url:"javascript:;",
+	  				count:1
+	  			}]
+	  		}
+	  	},
+	  	cardData2:{
+	  		header:{
+	  			text:"2015年第三季度绩效考核"
+	  		},
+	  		content:{
+	  			text:"fdsafdasfdsafdfdsafdsafdsa"
+	  		},
+	  		footer:{
+	  			text:"cardFooter"
 	  		}
 	  	}
 	  
@@ -58,7 +106,7 @@ export default class CardsPage extends Component {
 			    				<NavItem icon="bars" role="right" />
 			    			</Nav>
 			    			<div className="page-content">
-			    				<div className="content-block-title">Simple Card</div>
+			    				<div className="content-block-title">Card(直接配置)</div>
 			    				<div className="content-block no-padding">
 			    					<Card>
 			    						<CardHeader text="2015年第三季度绩效考核（7）"/>
@@ -66,11 +114,22 @@ export default class CardsPage extends Component {
 			    							Card with header and footer. Card header is used to display card title and footer for some additional information or for custom actions.
 			    						</CardContent>
 			    						<CardFooter>
-			    							<a href="#" className="link">待审批</a>
-    										<a href="#" className="link">待打分</a>
-    										<a href="#" className="link">签字确认</a>
+			    							CardFooter!
 			    						</CardFooter>
 			    					</Card>
+			    					
+			    				</div>
+			    				<div className="content-block-title">Card(配置datas)</div>
+			    				<div className="content-block no-padding">
+			    					<Card datas={this.props.cardData2}/> 
+			    				</div>
+			    				<div className="content-block-title">SimpleCard(配置datas)</div>
+			    				<div className="content-block no-padding">
+			    					<p>
+			    						<SimpleCard datas={this.props.cardData}/> 
+			    					</p>
+			    					<p><SimpleCard datas={this.props.cardData3}/></p>
+			    					<p><SimpleCard datas={this.props.cardData4}/></p>
 			    				</div>
 			    			</div>	
 			    		</Page>

@@ -14,7 +14,7 @@ export default class CardHeader extends Component {
 		super(props,context);
 	}
 	render(){
-		let { text ,  cls   , style  , ...other  } = this.props;
+		let {  cls  , text , style  , children ,...other  } = this.props;
 		return (
 			<div className={ classnames("card-header",cls) } { ...other } 
 					style={StylePropable.mergeAndPrefix(style)}>

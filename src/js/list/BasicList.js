@@ -11,10 +11,11 @@ export default class BasicList extends Component {
 	static defaultProps = {
 		type:"list"
 	}
-	//返回列表总数
+	//返回列表总数（个别子类需要重写这个方法）
 	getCount(){
 		return React.Children.count(this.props.children);
 	}
+	//具体子类去实现
 	renderByDatas(){
 		return null;
 	}

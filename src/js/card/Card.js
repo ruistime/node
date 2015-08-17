@@ -21,10 +21,13 @@ export default class Cards extends Component {
 	 * return Header Component
 	 */
 	renderHeader(){
-		const { header = {} } = this.props;
-		const { ...other } = header;
+		const { header  } = this.props.datas;
+		if(!header){
+			return null;
+		}
+		const {  ...other } = header;
 		return (
-			<CardHeader {...other} />
+			<CardHeader {...other} />	
 		);
 	}
 	/**
@@ -32,10 +35,13 @@ export default class Cards extends Component {
 	 * return Footer Component
 	 */
 	renderFooter(){
-		const { footer = {} } = this.props;
-		const { ...other } = footer;
+		const { footer = {} } = this.props.datas;
+		const { text , ...other } = footer;
+		
 		return (
-			<CardFooter {...other} />
+			<CardFooter {...other} >
+				{text}
+			</CardFooter>
 		);
 	}
 	/**
@@ -43,10 +49,12 @@ export default class Cards extends Component {
 	 * return content Component
 	 */
 	renderContent(){
-		const { content = {} } = this.props;
-		const { ...other } = content;
+		const { content = {} } = this.props.datas;
+		const { text, ...other } = content;
 		return (
-			<CardContent {...other} />
+			<CardContent {...other} >
+				{text}
+			</CardContent>
 		);
 	}
 	renderComponent(){

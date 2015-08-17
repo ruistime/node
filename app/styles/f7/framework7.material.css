@@ -3129,6 +3129,7 @@ html.android-4 .accordion-item-content {
   -webkit-align-items: center;
   align-items: center;
 }
+
 .card-header[valign="top"],
 .card-footer[valign="top"] {
   -webkit-box-align: start;
@@ -3312,7 +3313,7 @@ html.pixel-ratio-3 .card-header:after {
   border-radius: 0 0 2px 2px;
   color: #757575;
 }
-.card-footer:before {
+ .card-footer:before {
   content: '';
   position: absolute;
   left: 0;
@@ -3326,7 +3327,7 @@ html.pixel-ratio-3 .card-header:after {
   z-index: 15;
   -webkit-transform-origin: 50% 0%;
   transform-origin: 50% 0%;
-}
+} 
 html.pixel-ratio-2 .card-footer:before {
   -webkit-transform: scaleY(0.5);
   transform: scaleY(0.5);
@@ -6009,4 +6010,20 @@ html.android .page-from-center-to-right:before {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
+}
+.card-footer a.link {
+     color: #757575; 
+    
+}
+.visible_hidden{
+  visibility: hidden;
+}
+/* .card-footer {
+  border-top: 1px solid  #e1e1e1;
+  margin: 4px 16px;
+  padding: 0;
+} */
+.card {
+  margin:0 !important;
+ 
 }
