@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 
-//var AppUI  = require('../../../../dist/bs-appui.min.js');
+var AppUI  = require('../../../../dist/bs-appui.min.js');
 import Nav from '../../../../src/js/nav/Nav';
 import NavItem from '../../../../src/js/nav/NavItem';
 
@@ -9,6 +9,8 @@ import Page from '../../../../src/js/layout/Page';
 import Button from '../../../../src/js/button/Button';
 import ButtonRow from '../../../../src/js/button/ButtonRow';
 import ButtonList from '../../../../src/js/button/ButtonList';
+
+
 
 export default class ButtonPage extends Component {
 
@@ -35,6 +37,7 @@ export default class ButtonPage extends Component {
 	}
 	
 	render() {
+		console.log(AppUI.Button);
 		const { done} = this.state ;
 		return (
 				<Page animation={true} ref="pageComponent">
