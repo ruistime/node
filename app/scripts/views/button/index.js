@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-
+import classnames from 'classnames';
 
 /*var AppUI  = require('../../../../dist/bs-appui.min.js');*/
 import Nav from '../../../../src/js/nav/Nav';
 import NavItem from '../../../../src/js/nav/NavItem';
-import Container from '../../../../src/js/layout/Container';
-import PageContainer from '../../../../src/js/layout/PageContainer';
+
 import Page from '../../../../src/js/layout/Page';
 import Button from '../../../../src/js/button/Button';
 import ButtonRow from '../../../../src/js/button/ButtonRow';
@@ -15,38 +14,37 @@ export default class ButtonPage extends Component {
 
 	constructor(props,context){
 		super(props,context);
+		this.state = {
+			done:false
+		};
 	}
 
 	static defaultProps = {
 
 	}
 	componentDidMount(){
-
-		
+		console.log(this);
 	}
-
 	
-	handleBack(){
-		alert("单击了返回");
-	}
 	
 	onClick(btn){
-		alert("您单击的是："+btn.props.text);
+		this.refs.pageComponent.addClass("page-from-center-to-right");
+		setTimeout(()=>{
+			this._reactInternalInstance._context.router.transitionTo("/");
+		},500);
 	}
 	
 	render() {
-
-	    return (
-	    	<div className="views">
-			    <Container>
-			    	<PageContainer>
-			    		<Page>
-			    			<Nav title="绩效">
-			    				<NavItem icon="back" role="left"  onClick={::this.handleBack}/>
-			    				<NavItem icon="bars" role="right" />
-			    			</Nav>
-			    			<div className="page-content">
-			    				<div className="content-block-title">Button</div>
+		const { done} = this.state ;
+		return (
+				<Page animation={true} ref="pageComponent">
+	    			<Nav title="绩效">
+	    				<NavItem icon="back" role="left"  onClick={::this.onClick}/>
+	    				<NavItem icon="bars" role="right" />
+	    			</Nav>
+			    	<div className="page-content">
+			    		<div className="page-content-inner">
+			    			<div className="content-block-title">Button</div>
 			    				<div className="content-block">
 			    					<p>
 			    						<Button text="BUTTON(有事件)"  color="red"
@@ -64,7 +62,7 @@ export default class ButtonPage extends Component {
 			    						<Button color="teal" text="BUTTON" 
 			    						   fill="fill" size="big"/>
 			    					</p>
-			    				</div>
+					    		</div>
 			    				<div className="content-block-title">Button Row</div>
 			    				<div className="content-block">
 			    					<ButtonRow>
@@ -96,16 +94,11 @@ export default class ButtonPage extends Component {
 			    						  list="list"/>
 			    					</ButtonList>
 			    				</div>
-
-
 			    			</div>
-
-			    		</Page>
-			    	</PageContainer>
-			    </Container>
-			    
-			</div>
+	    				</div>
+	    		</Page>	
 	     );
+	}
   }
-}
+
 

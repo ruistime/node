@@ -1,5 +1,6 @@
 import React, { Component , PropTypes } from 'react';
 import NavItem from './NavItem';
+
 /**
  * Nav 组件
  *    用法示例：
@@ -14,6 +15,7 @@ import NavItem from './NavItem';
 	    text:显示文本
 	    role:显示位置
  */
+
 export default class Nav extends Component {
 	static defaultProps = {
 

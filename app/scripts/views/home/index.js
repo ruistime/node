@@ -9,10 +9,11 @@ const Home = React.createClass({
         return (
             <div>
                 <h2>组件列表</h2>
-                <h3><Link to="tabs">Tabs Component</Link></h3>
-                <h3><Link to="button">Button Component</Link></h3>
-                <h3><Link to="nav">Nav Component</Link></h3>
-                <h3><Link to="list">List Component</Link></h3>
+                <h3><Link to="tabs" >标签页（Tabs Component）</Link></h3>
+                <h3><Link to="button" params={{userId: "123"}}>按钮（Button Component）</Link></h3>
+                <h3><Link to="nav">顶部导航（Nav Component）</Link></h3>
+                <h3><Link to="list">列表（List Component）</Link></h3>
+                <h3><Link to="cards">卡片（Card Component）</Link></h3>
             </div>
         );
     }

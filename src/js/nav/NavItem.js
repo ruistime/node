@@ -1,5 +1,6 @@
 import React, { Component , PropTypes } from 'react';
 import classnames from 'classnames';
+const Link = ReactRouter.Link;
 /**
  * NavItem　组件
  */
@@ -20,13 +21,12 @@ export default class NavItem extends Component {
                 		{iconElement}
             	</a>
             ):(
-				<a href={url} key={Math.random()} onClick={::this.handleClick} className={classnames("link",{
-				"icon-only":!icon
-				}
-			)}>
-                {iconElement}
-               	<span>{text}</span>
-            </a>
+				<a href={url} key={Math.random()}  className={classnames("link",{
+					"icon-only":!icon
+				})}>
+                	{iconElement}
+               		<span>{text}</span>
+           		</a>
         );
         return element;	
 	}

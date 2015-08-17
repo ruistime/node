@@ -1,52 +1,41 @@
 import React , { Component , PropTypes } from 'react';
 import classnames from 'classnames';
-
+import * as CSSCore from '../utils/cssCore';
+import * as AnimationEvents from '../utils/animationEvents';
+import * as StylePropable from '../utils/stylePropable';
+import * as Constants from "../constants/constants";
 export default class Page extends Component {
-
-	changeProps(){
-		this.props.cls="xxx";
+	static defaultProps = {
+		animation:true,
+		cls:"",
+		style:{}
+	};
+	constructor(props,context){
+		super(props,context);
 	}
-	whichTransitionEvent(){
-		 	let t;
-		    let el = document.createElement('fakeelement');
-		    let transitions = {
-		      'transition':'transitionend',
-		      'OTransition':'oTransitionEnd',
-		      'MozTransition':'transitionend',
-		      'WebkitTransition':'webkitTransitionEnd'
-		    }
-
-		    for(t in transitions){
-		        if( el.style[t] !== undefined ){
-		            return transitions[t];
-		        }
-		    }
+	addClass(newClass){
+		let node = React.findDOMNode(this);
+		CSSCore.removeClass(node,Constants.ANIMATION_CLAESSES["show_end_animation"]);
+		CSSCore.addClass(node,Constants.ANIMATION_CLAESSES["hide_animation"]);
 	}
 	componentDidMount(){
-		const { namex } = this.props;
-	
-		const  node = React.findDOMNode(this);
+
+		let node = React.findDOMNode(this);
+		AnimationEvents.on(node,()=>{
+			CSSCore.removeClass(node,Constants.ANIMATION_CLAESSES["show_animation"]);
+			CSSCore.addClass(node,Constants.ANIMATION_CLAESSES["show_end_animation"]);
+		})
+	}
+	componentWillUnmount(){
 		
-		let  transitionEvent = this.whichTransitionEvent();
-
-		/*if($node.hasClass("page-from-right-to-center")){
-			node.addEventListener("webkitAnimationEnd",function(){
-				//$node.prop("class","page page-on-center")
-			});
-		}else{
-			node.addEventListener("webkitAnimationEnd",function(){
-				//$node.prop("class","page page-on-left");
-				//$node.prop("class","page page-on-center");
-			});
-		}*/
-
+		
 		
 	}
 	render(){
-		const { cls } = this.props;
-		
+		const { cls , animation , style , ...other} = this.props;
+		const result_class = animation ? Constants.ANIMATION_CLAESSES["show_animation"]:"";
 		return (
-			<div className={classnames("page",cls)} >
+			<div className={classnames("page",cls,result_class)}  {...other} style={StylePropable.mergeAndPrefix(style)}>
 				{this.props.children}
 			</div>
 		);

@@ -1,5 +1,13 @@
 export const A_DEFAUTL_URL = 'javascript:;';
 export const EMPTY = 'javascript:;';
+export const STRING_COMMON = {
+	EMPTY:""
+};
+export const ANIMATION_CLAESSES = {
+	'show_animation':'page-from-right-to-center',
+	'hide_animation':'page-from-center-to-right',
+	'show_end_animation':'page-on-center'
+}
 export const BTNCLASSES = {
 	'fill':'button-fill',
 	'raised':'button-raised',
@@ -9,7 +17,10 @@ export const BTNCLASSES = {
 export const LISTCLASSES = {
 	'link':'item-link item-content',
 	'list':'list-block',
-	'contacts':'contacts-block'
+	'contacts':'list-block contacts-block',
+	'media':'list-block media-list',
+	'group':'list-block list-group',
+	'virtual':'virtual-list'
 }
 //颜色
 export const COLORS = {

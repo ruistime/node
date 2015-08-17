@@ -3,6 +3,7 @@
  */
 const RouteHandler = ReactRouter.RouteHandler;
 const App = React.createClass({
+    
     render () {
         return (
             <div>

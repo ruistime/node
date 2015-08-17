@@ -128,7 +128,7 @@ export default class Tabs extends Component {
 					</div>
 				</div>
 				<div className="tabs-animated-wrap">
-					<div className="tabs"  ref="animatedWrap" style={tabsStyle}>
+					<div className="tabs"  ref="animatedWrap" style={StylePropable.mergeAndPrefix(tabsStyle)}>
 						{tabsContent}
 					</div>
 				</div>
