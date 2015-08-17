@@ -12,6 +12,10 @@ import Button from './views/button/index.js';
 import Nav from './views/nav/index.js';
 import List from './views/list/index.js';
 import Card from './views/cards/index.js';
+
+
+import Test from './views/test/index.js';
+
 const routes  = (
     <Route handler={App}>
         <DefaultRoute handler={Home}/>
@@ -21,6 +25,7 @@ const routes  = (
         <Route path="nav" name="nav" handler={Nav}/>
         <Route path="list" name="list" handler={List} />
         <Route path="cards" name="cards" handler={Card} />
+        <Route path="test" name="test" handler={Test} />
     </Route>
 );
 
