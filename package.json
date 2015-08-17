@@ -6,11 +6,12 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "build": "webpack --config tools/webpack.config.prod.js --progress  --display-modules",
     "dev-server": "webpack-dev-server --config webpack.dev.config.js --progress --colors --inline --host localhost --port 8080 --content-base app/",
-    "hot-server": "webpack-dev-server --config webpack.hot.dev.config.js --hot --progress --colors --inline --host 10.129.10.62 --port8080 --content-base app/",
-    "build": "webpack --config webpack.prod.config.js --progress --profile --colors",
-
+    "hot-server": "webpack-dev-server --config webpack.hot.dev.config.js --hot --progress --colors --inline --host localhost --port8080 --content-base app/",
     "lib-build": "webpack --config tools/webpack.config.min.js --progress  --display-modules"
+    "app-build": "webpack --config webpack.prod.config.js --progress --profile --colors"
+
   },
   "main": "app.js",
   "devDependencies": {

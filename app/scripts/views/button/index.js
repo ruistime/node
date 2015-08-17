@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 
-/*var AppUI  = require('../../../../dist/bs-appui.min.js');*/
+//var AppUI  = require('../../../../dist/bs-appui.min.js');
 import Nav from '../../../../src/js/nav/Nav';
 import NavItem from '../../../../src/js/nav/NavItem';
 
